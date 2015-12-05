@@ -1,0 +1,3 @@
+load("dictionary.rdata")
+load("articles.rdata")
+spm.3<- prepareSparseDocumentMatrix(articles.list[[1]], word.dictionary)

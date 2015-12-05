@@ -1,0 +1,11 @@
+todo:
+
+
+
+* fix obituaries
+* 
+
+write.table(document, "Sports_sparse.txt", col.names=FALSE, row.names=FALSE)
+write.table(document, "World_sparse.txt", col.names=FALSE, row.names=FALSE)
+write.table(document, "Arts_sparse.txt", col.names=FALSE, row.names=FALSE)
+write.table(document, "Obituaries_sparse.txt", col.names=FALSE, row.names=FALSE)
