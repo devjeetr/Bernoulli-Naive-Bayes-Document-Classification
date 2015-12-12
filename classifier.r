@@ -13,14 +13,6 @@ trainClassifier <- function(spd.list, alpha, beta){
 	
 	n = Reduce('+', unlist(mclapply(X=spd.list, mc.cores=4,FUN=function(x){return (dim(x)[2])})));
 	
-	# theta_base = apply(X=spd.list[[1]], FUN=function(slice, n_c, a, b){
-	# 		#print(slice);
-	# 		slice = as.numeric(slice);
-	# 		n_jc = Reduce('+', slice);
-			
-	# 		return ((n_jc + a - 1)/(n_c + a + b - 2));
-	# 		}, n_c, alpha, beta, MARGIN=1);
-
 	theta_base =  matrix((alpha-1)/(alpha+beta-2), ncol=1, nrow=n_w);
 	
 	#print(dim(theta_base))
@@ -153,13 +145,8 @@ train <- function(sparse.document.matrix, documents.total, alpha, beta, theta_ba
 			}, n_c, alpha, beta, MARGIN=1);
 
 	theta_c = n_c/documents.total;
-	#print(dim(theta_base))
-	#print(dim(theta_jc));
-	 w = log((theta_jc)/((1-theta_jc)))
-	# w = log(theta_jc)
-	w_0c = sum(log(theta_jc)) + log(theta_c/theta_base_c)
+	
 	weights = data.frame(Weight = theta_jc, Weight_c=theta_c);
-	# weights = data.frame(Weight = w, Weight_c = w_0c);
 	
 	return (weights);
 }
